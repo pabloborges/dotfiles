@@ -1,0 +1,2 @@
+You can put files here to add functionality separated per file
+Files on the zsh/ directory will be automatically loaded by the init script, in alphabetical order.

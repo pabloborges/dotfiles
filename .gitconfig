@@ -1,0 +1,13 @@
+[user]
+	name = Pablo Borges
+	email = 31711+pabloborges@users.noreply.github.com
+[core]
+	excludesfile = /Users/pabloborges/.gitignore_global
+[fetch]
+	prune = true
+[pull]
+	ff = only
+[push]
+	default = current
+[alias]
+	history = show-tree
