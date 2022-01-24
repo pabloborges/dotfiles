@@ -77,8 +77,3 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 DEFAULT_USER=pabloborges
 
-# Load custom aliases
-# source $HOME/.aliases
-
-# Syntax Highlighting
-# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
