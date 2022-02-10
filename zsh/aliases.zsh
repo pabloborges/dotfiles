@@ -1,5 +1,4 @@
 alias be="bundle exec"
-alias code="codium ."
 alias ys="yarn start"
 
 # macOS has no `md5sum`, so use `md5` as a fallback
