@@ -9,4 +9,4 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 alias reload="exec ${SHELL} -l"
 
 # Don't expand
-GLOBALIAS_FILTER_VALUES=(grep l z)
+GLOBALIAS_FILTER_VALUES=(grep l rspec z)
