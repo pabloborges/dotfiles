@@ -86,11 +86,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-DEFAULT_USER=pabloborges
-
-# Don't add code here. Add a <FEATURE>.zsh file to zsh/after
-# and it will be automatically loaded
-for file in $DOTFILES/zsh/after/*.zsh; do
+# Don't add code to this file. Add one .zsh file per
+# functionality to zsh/after (or zsh/custom).
+for file in $DOTFILES/zsh/{custom,after}/*.zsh; do
   source $file
 done
