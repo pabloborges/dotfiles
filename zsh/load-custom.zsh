@@ -1,4 +1,5 @@
-for file in $HOME/dotfiles/zsh/custom/*.zsh
+for file in $DOTFILES/zsh/custom/*.zsh
 do
   source $file
 done
+

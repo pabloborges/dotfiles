@@ -89,3 +89,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 DEFAULT_USER=pabloborges
 
+# Don't add code here. Add a <FEATURE>.zsh file to zsh/after
+# and it will be automatically loaded
+for file in $DOTFILES/zsh/after/*.zsh; do
+  source $file
+done
