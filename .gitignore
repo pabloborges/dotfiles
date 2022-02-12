@@ -1,1 +1,2 @@
-zsh/custom/*.zsh
+zsh/custom/
+zsh/after/zsh-syntax-highlighting.zsh

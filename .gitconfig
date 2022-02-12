@@ -2,7 +2,7 @@
 	name = Pablo Borges
 	email = 31711+pabloborges@users.noreply.github.com
 [core]
-	excludesfile = /Users/pabloborges/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [fetch]
 	prune = true
 [pull]
@@ -11,11 +11,4 @@
 	default = current
 [alias]
 	history = show-tree
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[commit]
-	template = /Users/pabloborges/.stCommitMsg
+
