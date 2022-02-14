@@ -1,6 +1,7 @@
 [user]
 	name = Pablo Borges
 	email = 31711+pabloborges@users.noreply.github.com
+	signingkey = 4B53D8C926CC12FB
 [core]
 	excludesfile = ~/.gitignore_global
 [fetch]
@@ -12,3 +13,5 @@
 [alias]
 	history = show-tree
 
+[commit]
+	gpgsign = true
