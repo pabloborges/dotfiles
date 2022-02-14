@@ -25,6 +25,7 @@ ln -sf ~/dotfiles/config/starship.toml ~/.config/starship.toml
 ln -sf ~/dotfiles/config/todo.cfg ~/.todo.cfg
 ln -sf $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/dotfiles/zsh/after/zsh-syntax-highlighting.zsh 
 
+mkdir -p $SCRIPT_DIR/zsh/custom/
 echo "\
 # You can put files here to add functionality separated per file, which
 # will be ignored by git.\
