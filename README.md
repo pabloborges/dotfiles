@@ -30,5 +30,6 @@ cd ~/dotfiles
 - iTerm2
 - VS Code
 
-### Install Solarized Dark Higher Contrast (required for `zsh-completions` to work)
-The default Solarized Dark theme that comes with iTerm2 interprests the gray colour as equal as the background. To fix this, install [extras/Solarized Dark Higher Contrast.itermcolors](https://github.com/pabloborges/dotfiles/blob/main/extras/Solarized%20Dark%20Higher%20Contrast.itermcolors).
+### Recommended: Install VSCode Dark+.itermcolors
+Neovim is configured to use the `VSCode Dark+` colorscheme. It's recommended to use the same colors for iTerm2: [VSCode Dark+.itermcolors](https://github.com/pabloborges/dotfiles/blob/main/extras/VSCode%20Dark%2B.itermcolors).
+
