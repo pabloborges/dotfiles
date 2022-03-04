@@ -71,18 +71,19 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-        brew
-        bundler
-        command-not-found
-        docker docker-compose
-        git
-        globalias
-        history-substring-search
-        macos
-        rbenv
-        z
-        zsh-autosuggestions
+        command-not-found # Suggests packages to be installed if a command cannot be found
+        docker # Auto-completion
+        docker-compose # Auto-completion
+        globalias # Expands all glob expressions, subcommands and aliases
+        gpg-agent # Enables gpg-agent if it is not running
+        history-substring-search # Type in any part of a command from history and press UP/DOWN to cycle through matches
+        rbenv # Add Ruby version to prompt
+        z # Quick access to most visited directories
+        zsh-autosuggestions # Suggests commands as you type
 )
+
+# See ~/.oh-my-zsh/plugins/keychain/README.md
+zstyle :omz:plugins:keychain agents gpg,ssh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,3 +92,4 @@ source $ZSH/oh-my-zsh.sh
 for file in $DOTFILES/zsh/{custom,after}/*.zsh; do
   source $file
 done
+

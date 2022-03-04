@@ -1,1 +1,1 @@
-# Scripts in this directory will run after .zshrc
+# Scripts in this directory will run after the call to oh-my-zsh.sh in .zshrc
