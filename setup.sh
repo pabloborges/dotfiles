@@ -12,7 +12,7 @@ brew tap homebrew/cask-fonts
 brew install --quiet font-fira-code-nerd-font
 
 echo "Installing dependencies and other useful commands"
-brew install --quiet coreutils git git-extras neovim ripgrep sourcetree starship tldr todo-txt wget zsh zsh-completions zsh-syntax-highlighting
+brew install --quiet coreutils exa fd git git-extras neovim ripgrep sourcetree starship sublime-text tldr todo-txt wget zsh zsh-completions zsh-syntax-highlighting
 
 echo "Adding symlinks"
 ln -sf ~/dotfiles/.aliases ~/.aliases
