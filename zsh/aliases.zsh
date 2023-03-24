@@ -8,8 +8,12 @@ alias reload="exec ${SHELL} -l" # Reload the shell
 alias tree="exa --tree --level=2"
 alias ys="yarn start"
 
+# docker
+alias compose="docker compose"
+
 # dotfiles
 alias aliases="nvim $0"
+alias zshrc="nvim ~/.zshrc"
 
 # git
 alias gap="git add --patch"
@@ -23,6 +27,12 @@ alias gst="git status"
 
 # projects
 alias notes="nvim ~/Documents/notes/iCloud"
+
+# ruby
+alias be="bundle exec"
+alias rgrb="rg --type ruby --type erb --files-with-matches"
+# e.g. with-spec touch app/models/user.rb
+with-spec() { ruby -e "puts '$2', '$2'.sub(/^app\/(.*)\.rb/, 'spec/\1_spec.rb')" | xargs $1 }
 
 # macOS has no `md5sum`, so use `md5` as a fallback
 command -v md5sum > /dev/null || alias md5sum="md5"
