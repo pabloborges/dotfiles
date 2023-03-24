@@ -12,7 +12,7 @@ brew tap homebrew/cask-fonts
 brew install --quiet font-fira-code-nerd-font
 
 echo "Installing dependencies and other useful commands"
-brew install --quiet coreutils exa fd git git-extras neovim ripgrep sourcetree starship sublime-text tldr todo-txt wget zsh zsh-completions zsh-syntax-highlighting
+brew install --quiet coreutils exa fd git git-extras jq neovim procs ripgrep sd sourcetree starship tldr wget zsh zsh-completions zsh-syntax-highlighting
 
 echo "Adding symlinks"
 ln -sf ~/dotfiles/.aliases ~/.aliases
@@ -25,7 +25,7 @@ ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/config/nvim ~/.config/nvim
 ln -sf ~/dotfiles/config/starship.toml ~/.config/starship.toml
 ln -sf ~/dotfiles/config/todo.cfg ~/.todo.cfg
-ln -sf $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/dotfiles/zsh/after/zsh-syntax-highlighting.zsh 
+ln -sf $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/dotfiles/zsh/after/zsh-syntax-highlighting.zsh
 
 mkdir -p $SCRIPT_DIR/zsh/custom/
 echo "\
