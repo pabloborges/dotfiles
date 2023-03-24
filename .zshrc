@@ -71,13 +71,16 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+        bundler
         command-not-found # Suggests packages to be installed if a command cannot be found
         docker # Auto-completion
         docker-compose # Auto-completion
         globalias # Expands all glob expressions, subcommands and aliases
         gpg-agent # Enables gpg-agent if it is not running
         history-substring-search # Type in any part of a command from history and press UP/DOWN to cycle through matches
+        mix # Completions
         rbenv # Add Ruby version to prompt
+        yarn # Auto-completion and aliases
         z # Quick access to most visited directories
         zsh-autosuggestions # Suggests commands as you type
 )
