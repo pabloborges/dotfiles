@@ -1,3 +1,6 @@
+# asdf shims will timeout without this
+command_timeout = 1000
+
 ###################
 # Nerd Font Symbols
 ###################
