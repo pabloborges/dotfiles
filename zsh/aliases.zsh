@@ -3,9 +3,9 @@
 ##########
 
 # common
-alias l="exa -lah --git --icons"
+alias l="eza --icons --git -lah"
 alias reload="exec ${SHELL} -l" # Reload the shell
-alias tree="exa --tree --level=2"
+alias tree="eza --tree --level=2"
 alias ys="yarn start"
 
 # docker
