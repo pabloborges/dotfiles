@@ -25,6 +25,9 @@ alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgre
 alias gp="git push -u"
 alias gst="git status"
 
+# sourcetree
+alias stree="open -a SourceTree ."
+
 # projects
 alias notes="nvim ~/Documents/notes/iCloud"
 
