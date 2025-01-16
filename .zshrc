@@ -79,7 +79,6 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
         bundler
-        command-not-found # Suggests packages to be installed if a command cannot be found
         docker # Auto-completion
         docker-compose # Auto-completion
         globalias # Expands all glob expressions, subcommands and aliases
