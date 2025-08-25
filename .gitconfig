@@ -4,17 +4,60 @@
 	signingkey = 4B53D8C926CC12FB
 [core]
 	excludesfile = ~/.gitignore_global
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
 [pull]
 	ff = only
 [push]
-	default = current
+	default = simple
+	autoSetupRemote = true
+	followTags = true
 [alias]
 	history = show-tree
-
 [commit]
-	gpgsign = true
+	gpgSign = false
+
+# Optional but recommended settings
+
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[core]
+	excludesfile = ~/.gitignore
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
+# a matter of taste (uncomment if you dare)
+
+[core]
+	# fsmonitor = true
+	# untrackedCache = true
+[merge]
+	# (just 'diff3' if git version < 2.3)
+	# conflictstyle = zdiff3
+[pull]
+	# rebase = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

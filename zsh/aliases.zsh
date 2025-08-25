@@ -17,12 +17,12 @@ alias zshrc="nvim ~/.zshrc"
 
 # git
 alias gap="git add --patch"
-alias gc="git commit -v"
+alias gc="git commit"
 alias gcl="git clone --recurse-submodules"
 alias gco="git checkout"
 alias gl="git pull"
 alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'"
-alias gp="git push -u"
+alias gp="git push"
 alias gst="git status"
 
 # sourcetree
