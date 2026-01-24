@@ -1,0 +1,7 @@
+git_protocol: https
+editor: nvim
+aliases:
+    co: pr checkout
+    prc: pr create
+    prv: pr view
+version: "1"

@@ -1,0 +1,87 @@
+# Git configuration
+
+[core]
+  editor = nvim
+  pager = delta
+  excludesfile = ~/.gitignore_global
+
+[user]
+  name = Pablo Borges
+  email = 31711+pabloborges@users.noreply.github.com
+  signingkey = 4B53D8C926CC12FB
+
+[init]
+  defaultBranch = main
+
+[branch]
+  sort = -committerdate # Sort branches by last commit date
+
+[column]
+  ui = auto # Enable column UI automatically
+
+[color]
+  ui = auto # Enable color UI automatically
+
+[commit]
+  gpgsign = true # Sign all commits by default
+  verbose = true # Show diff in commit message editor
+
+[delta]
+  navigate = true # Enable navigation in delta pager (use n and N to move between diff sections)
+  light = false # Use dark theme by default
+  ; side-by-side = true # Show diffs side by side
+
+[diff]
+  algorithm = patience # Better for code changes
+  colorMoved = default # Highlight moved lines
+  mnemonicprefix = true # Use 'i' and 'w' instead of 'index' and 'worktree'
+  renames = copies # Detect renames and copies
+
+[fetch]
+  prune = true # Automatically prune deleted remote branches
+  pruneTags = true # Automatically prune deleted remote tags
+  all = true # Fetch all remotes
+
+[help]
+  autocorrect = prompt # Auto-correct typos in git commands
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = zdiff3 # Show base version in conflicts
+
+[pull]
+  ff = only # Only allow fast-forward merges
+  rebase = true # Use rebase instead of merge for pulls
+
+[push]
+  autoSetupRemote = true # Automatically set up remote tracking branches
+  default = simple # Push only the current branch to its upstream
+  followTags = true # Push tags that are reachable from the pushed branch
+
+[rebase]
+  autoSquash = true # Automatically squash fixup! and squash! commits
+  autoStash = true # Automatically stash changes before rebasing
+  updateRefs = true # Update refs after rebase
+
+[rerere]
+  autoupdate = true # Automatically apply recorded resolutions
+  enabled = true # Enable reuse of recorded resolution
+
+[tag]
+  sort = version:refname # Sort tags by version
+
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  cm = commit
+  df = diff
+  lg = log --oneline --graph --decorate --all
+  amend = commit --amend --no-edit
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  type = cat-file -t
+  dump = cat-file -p
+  history = show-tree

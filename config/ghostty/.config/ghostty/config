@@ -1,0 +1,15 @@
+# Ghostty configuration
+
+theme = catppuccin-macchiato.conf
+
+font-family = Iosevka Nerd Font
+font-size = 14
+
+# Window configuration
+# window-decoration = false # Uncomment to disable window decorations. Note: this will disable tabs.
+
+# Scroll configuration
+scrollback-limit = 10000
+
+# Automatically copy selected text to clipboard
+copy-on-select = clipboard
