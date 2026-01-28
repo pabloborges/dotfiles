@@ -1,5 +1,6 @@
 # Core utilities
 brew "bat" # A cat clone with syntax highlighting and Git integration
+brew "bash-completion@2" # Programmable completion for Bash
 brew "coreutils" # GNU core utilities
 brew "eza" # Modern replacement for 'ls'
 brew "fd" # Simple, fast and user-friendly alternative to 'find'
