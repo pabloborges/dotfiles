@@ -20,6 +20,9 @@ main() {
   # Setup stow
   ./scripts/stow.sh
 
+  # Configure macOS defaults
+  ./scripts/macos-defaults.sh
+
   echo "✨ Setup complete! Please restart your shell to see changes."
 }
 

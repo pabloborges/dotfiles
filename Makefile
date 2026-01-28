@@ -1,4 +1,4 @@
-.PHONY: help install setup clean
+.PHONY: help install setup clean defaults
 
 help: ## Show this help message
 	@echo "Usage: make [target]"
@@ -23,3 +23,6 @@ stow: ## Symlink dotfiles to home directory
 
 unstow: ## Remove symlinks from home directory
 	@./scripts/unstow.sh
+
+defaults: ## Configure macOS system defaults
+	@./scripts/macos-defaults.sh
