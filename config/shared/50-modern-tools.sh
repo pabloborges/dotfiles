@@ -8,11 +8,9 @@ if [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
 fi
 
 # ASDF completions (Bash only, Zsh uses fpath)
-if [ -n "$BASH_VERSION" ]; then
-	if [ -f "/opt/homebrew/etc/bash_completion.d/asdf" ]; then
-		. "/opt/homebrew/etc/bash_completion.d/asdf"
-	elif [ -f "/usr/local/etc/bash_completion.d/asdf" ]; then
-		. "/usr/local/etc/bash_completion.d/asdf"
+if [ -n "$BASH_VERSION" ] && command -v brew &>/dev/null; then
+	if [ -f "$(brew --prefix)/etc/bash_completion.d/asdf" ]; then
+		. "$(brew --prefix)/etc/bash_completion.d/asdf"
 	elif [ -f "$HOME/.asdf/completions/asdf.bash" ]; then
 		. "$HOME/.asdf/completions/asdf.bash"
 	fi

@@ -126,6 +126,9 @@ configure_dock() {
   # Set to 0.1 for very fast, 0.15 for fast, 0.2 for moderate
   defaults write com.apple.dock expose-animation-duration -float 0.1
 
+  # Group windows by application in Mission Control
+  defaults write com.apple.dock expose-group-apps -bool true
+
   # Don't automatically rearrange Spaces based on most recent use
   # Keeps spaces in the order you arranged them
   defaults write com.apple.dock mru-spaces -bool false
@@ -174,10 +177,8 @@ configure_trackpad() {
   defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
   defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
-  # Note: Tap to click, three-finger drag, and natural scrolling are NOT enabled
   # To enable tap to click: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
   # To enable three-finger drag: requires accessibility settings
-  # To enable natural scrolling: defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 }
 
 # Keyboard settings
@@ -220,11 +221,6 @@ configure_keyboard() {
   # Tab between all controls in dialogs (not just text fields)
   # 1 = Text boxes and lists only, 3 = All controls
   defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-  # Use function keys as standard function keys
-  # F1-F12 work as standard function keys (brightness/volume require Fn key)
-  # Set to "false" to use media keys by default
-  defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 }
 
 # Screenshot settings
