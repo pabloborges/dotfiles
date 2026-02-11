@@ -3,10 +3,11 @@
 # Git
 alias gst='git status'
 alias gco='git checkout'
-alias gcm='git commit'
+alias gc='git commit'
 alias ga='git add'
 alias gb='git branch'
-alias gl='git log --oneline --graph --decorate'
+alias gl='git pull'
+alias glog='git log --oneline --graph --decorate'
 
 # Docker
 alias compose="docker compose"
