@@ -30,6 +30,7 @@ brew "neovim" # Modern Vim-based text editor
 brew "opencode" # Open source AI coding agent
 brew "prettier" # Code formatter
 brew "shfmt" # Shell script formatter
+brew "worktrunk" # Git worktree manager
 
 # Productivity tools
 cask "ghostty" # Fast GPU-accelerated terminal emulator

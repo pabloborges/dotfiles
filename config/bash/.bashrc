@@ -9,3 +9,5 @@ if [ -d "$HOME/.bashrc.d" ]; then
     [ -r "$file" ] && . "$file"
   done
 fi
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi
