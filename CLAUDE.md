@@ -51,8 +51,10 @@ The project uses a hybrid approach with shared and shell-specific configurations
 
 2. **Zsh-specific configs** (loaded after shared):
    - `20-zsh-completions.zsh` - Enhanced completions for Homebrew tools
+   - `21-fzf-tab.zsh` - Fuzzy TAB completion via fzf-tab (must load after compinit, before syntax-highlighting)
+   - `22-fzf.zsh` - fzf shell integration + UP arrow bound to fuzzy history search
    - `25-zsh-syntax-highlighting.zsh` - Enable syntax highlighting
-   - `27-zsh-history-substring-search.zsh` - Better history search
+   - `26-zsh-autosuggestions.zsh` - Fish-like inline suggestions from history
    - `45-globalias.zsh` - Enable alias expansion on space
 
 3. **Bash-specific:**
@@ -64,14 +66,16 @@ The project uses a hybrid approach with shared and shell-specific configurations
 2. Checks for Homebrew installation
 3. Calls `scripts/install.sh` → runs `brew bundle`
 4. Calls `scripts/stow.sh` → creates symlinks for all config packages
-5. Calls `scripts/macos-defaults.sh` → configures macOS system defaults
+5. Calls `scripts/git-setup.sh` → prompts for Git user identity (name, email, optional GPG key) and writes `~/.gitconfig.local`
+6. Calls `scripts/macos-defaults.sh` → configures macOS system defaults
 
 ## Key Configuration Files
 
 - **Brewfile**: All Homebrew dependencies (tools, casks, fonts)
 - **scripts/macos-defaults.sh**: macOS system defaults for power users (Finder, Dock, Keyboard, etc.)
 - **config/starship/.config/starship.toml**: Catppuccin Powerline prompt (Macchiato theme)
-- **config/git/.gitconfig**: Git configuration with global gitignore reference
+- **config/git/.gitconfig**: Git configuration with global gitignore reference (uses `[include]` to load `~/.gitconfig.local` for user identity)
+- **scripts/git-setup.sh**: Interactive Git user identity setup (creates `~/.gitconfig.local`)
 - **config/ghostty/.config/ghostty/config**: Terminal emulator with Catppuccin theme and custom themes
 
 ## Adding New Tools
