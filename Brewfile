@@ -9,16 +9,19 @@ brew "htop" # Interactive process viewer
 brew "httpie" # User-friendly command-line HTTP client
 brew "jq" # Command-line JSON processor
 brew "ripgrep" # Fast search tool like grep
-brew "tldr" # Simplified and community-driven man pages
 brew "starship" # Cross-shell prompt
 brew "stow" # Symlink farm manager for dotfiles
+brew "tealdeer" # Fast tldr client (Rust implementation)
 brew "zoxide" # Smart directory jumper
 brew "zsh" # Z shell
+brew "fzf" # Fuzzy finder for shell history and file search
+brew "fzf-tab" # Replace zsh completion with fzf
+brew "zsh-autosuggestions" # Fish-like autosuggestions for Zsh
 brew "zsh-completions" # Additional completion definitions for Zsh
 brew "zsh-syntax-highlighting" # Syntax highlighting for Zsh
-brew "zsh-history-substring-search" # Better history search for Zsh
 
 # Development tools
+brew "asdf" # Version manager
 brew "black" # Python code formatter
 brew "gh" # GitHub CLI tool
 brew "git-delta" # Syntax-highlighting pager for git and diff output
@@ -28,17 +31,9 @@ brew "opencode" # Open source AI coding agent
 brew "prettier" # Code formatter
 brew "shfmt" # Shell script formatter
 
-# Docker
-brew "colima" # Container runtimes on MacOS with minimal setup
-brew "docker" # Container platform (CLI)
-brew "docker-compose" # Define and run multi-container Docker applications
-
 # Productivity tools
 cask "ghostty" # Fast GPU-accelerated terminal emulator
 cask "raycast" # Productivity app for macOS
-
-# Version manager
-brew "asdf"
 
 # Fonts
 cask "font-fira-code-nerd-font"
