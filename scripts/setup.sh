@@ -20,6 +20,9 @@ main() {
   # Setup stow
   ./scripts/stow.sh
 
+  # Configure Git user identity
+  ./scripts/git-setup.sh
+
   # Configure macOS defaults
   ./scripts/macos-defaults.sh
 
