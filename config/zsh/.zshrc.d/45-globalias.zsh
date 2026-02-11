@@ -1,7 +1,7 @@
 # Function to expand aliases
 globalias() {
     # List of aliases to NOT expand
-    local -a skip_aliases=(l ls ll tree)
+    local -a skip_aliases=(cat l ls ll tree)
 
     # Extract the last word on the current line
     local last_word=${LBUFFER##* }
