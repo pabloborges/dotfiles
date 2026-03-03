@@ -9,7 +9,9 @@ font-size = 14
 # window-decoration = false # Uncomment to disable window decorations. Note: this will disable tabs.
 
 # Scroll configuration
-scrollback-limit = 10000
+scrollback-limit = 100000
 
 # Automatically copy selected text to clipboard
 copy-on-select = clipboard
+
+unfocused-split-opacity = 0.5
