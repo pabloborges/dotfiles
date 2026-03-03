@@ -737,6 +737,7 @@ require('lazy').setup({
         },
         opts = {},
       },
+      { 'giuxtaposition/blink-cmp-copilot' },
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -782,7 +783,15 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets' },
+        default = { 'lsp', 'path', 'snippets', 'copilot' },
+        providers = {
+          copilot = {
+            name = 'copilot',
+            module = 'blink-cmp-copilot',
+            score_offset = 100,
+            async = true,
+          },
+        },
       },
 
       snippets = { preset = 'luasnip' },
@@ -813,6 +822,16 @@ require('lazy').setup({
       require('catppuccin').setup(opts)
       vim.cmd.colorscheme 'catppuccin'
     end,
+  },
+
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    },
   },
 
   -- Highlight todo, notes, etc in comments
