@@ -867,6 +867,19 @@ require('lazy').setup({
     opts = { signs = false },
   },
 
+  {
+    'stevearc/oil.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    keys = {
+      { '-', '<cmd>Oil<CR>', desc = 'Open parent directory' },
+    },
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
+  },
+
   { -- Collection of various small independent plugins/modules
     'nvim-mini/mini.nvim',
     config = function()
