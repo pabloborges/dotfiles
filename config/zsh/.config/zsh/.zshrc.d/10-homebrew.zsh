@@ -18,20 +18,13 @@ if command -v brew &>/dev/null; then
 	# Remove existing Homebrew paths first, then prepend them
 	PATH="$(echo "$PATH" | tr ':' '\n' | grep -v "^$BREW_PREFIX" | tr '\n' ':' | sed 's/:$//')"
 	export PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
-
-	# Load Homebrew bash completions
-	if [ -n "$BASH_VERSION" ]; then
-		if [ -f "$BREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
-			. "$BREW_PREFIX/etc/profile.d/bash_completion.sh"
-		fi
-	fi
 else
 	# Fail with a helpful message
 	echo "Error: Homebrew (brew) could not be found in PATH or standard locations."
 	echo "Standard locations searched: /opt/homebrew, ~/homebrew, /usr/local"
 fi
 
-# Reproduces Ubuntu’s command-not-found for Homebrew users on macOS.
+# Reproduces Ubuntu's command-not-found for Homebrew users on macOS.
 HOMEBREW_COMMAND_NOT_FOUND_HANDLER="$(brew --repository)/Library/Homebrew/command-not-found/handler.sh"
 if [ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ]; then
 	source "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER";

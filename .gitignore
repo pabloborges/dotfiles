@@ -13,3 +13,10 @@
 # Temporary files
 tmp/
 temp/
+
+# ZSH local files
+config/zsh/.config/zsh/.zcompdump
+config/zsh/.config/zsh/.zcompcache/
+config/zsh/.config/zsh/.zsh_history
+config/zsh/.config/zsh/.zsh_sessions/
+config/zsh/.config/zsh/.zshrc.d/99-local.zsh

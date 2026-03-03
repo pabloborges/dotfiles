@@ -30,35 +30,31 @@ The `stow.sh` script iterates through all directories in `config/` and uses `sto
 
 ### Shell Configuration Loading
 
-The project uses a hybrid approach with shared and shell-specific configurations:
+Zsh is the primary shell. Bash config is a self-contained fallback.
 
-**Shared Configuration (config/shared/):**
-- Shell-agnostic configurations that work with both bash and zsh
-- Includes shell detection where needed for tools like zoxide and starship
-- Loaded first by both bash and zsh main rc files
+**Zsh Configuration (`config/zsh/`):**
+- `.zshrc` sources all files in `.zshrc.d/` in numeric order
+- `.zshrc.d/` contains both general configs and zsh-specific enhancements
 
-**Shell-Specific Configuration:**
-- Zsh-specific enhancements in `config/zsh/.zshrc.d/`
-- Bash completions handled within shared configs
+**Bash Configuration (`config/bash/`):**
+- `.bashrc` is a single self-contained file with all configs inlined
+- Includes bash-specific tool initialization (zoxide, starship, completions)
 
-**Loading Order:**
-1. **Shared configs** (loaded by both shells):
-    - `10-homebrew.sh` - Dynamic Homebrew PATH detection via `brew --prefix` + bash completions
-    - `30-zoxide.sh` - Initialize zoxide for directory jumping
-    - `40-starship.sh` - Initialize Starship prompt
-    - `50-modern-tools.sh` - ASDF and modern tool aliases (eza, bat, fd, etc.)
-    - `55-aliases.sh` - General shell aliases
-
-2. **Zsh-specific configs** (loaded after shared):
+**Zsh Loading Order** (all in `config/zsh/.zshrc.d/`):
+   - `05-terminal.zsh` - Terminal TERM fix for dumb terminals
+   - `10-homebrew.zsh` - Dynamic Homebrew PATH detection via `brew --prefix`
    - `20-zsh-completions.zsh` - Enhanced completions for Homebrew tools
    - `21-fzf-tab.zsh` - Fuzzy TAB completion via fzf-tab (must load after compinit, before syntax-highlighting)
    - `22-fzf.zsh` - fzf shell integration + UP arrow bound to fuzzy history search
    - `25-zsh-syntax-highlighting.zsh` - Enable syntax highlighting
    - `26-zsh-autosuggestions.zsh` - Fish-like inline suggestions from history
+   - `30-zoxide.zsh` - Initialize zoxide for directory jumping
+   - `40-starship.zsh` - Initialize Starship prompt
    - `45-globalias.zsh` - Enable alias expansion on space
-
-3. **Bash-specific:**
-   - Completions integrated into `10-homebrew.sh`
+   - `50-modern-tools.zsh` - ASDF and modern tool aliases (eza, bat, fd, etc.)
+   - `55-aliases.zsh` - General shell aliases (git, docker)
+   - `60-functions.zsh` - Shell functions (getenv)
+   - `65-worktrunk.zsh` - Worktrunk shell integration
 
 ### Setup Flow
 
@@ -120,19 +116,15 @@ The configuration dynamically detects Homebrew installation location using `brew
 
 ## Shell Completions
 
-The configuration includes comprehensive shell completions for Homebrew tools:
-
-**Bash Completions:**
-- Loaded via shared `10-homebrew.sh` from Homebrew's bash completion script
-- Includes completions for brew, asdf, and other Homebrew-installed tools
-
 **Zsh Completions:**
 - Enhanced via `20-zsh-completions.zsh` with multiple paths:
   - Homebrew's `site-functions` (contains brew, asdf completions)
   - Additional `zsh-completions` package for extended tool support
 - Proper fpath ordering ensures completions are available early
 
-Both shells gracefully handle missing completion scripts, avoiding errors when tools aren't installed yet.
+**Bash Completions:**
+- Loaded inline in `.bashrc` from Homebrew's bash completion script
+- Includes completions for brew, asdf, and other Homebrew-installed tools
 
 ## Important Notes
 
