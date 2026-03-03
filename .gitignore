@@ -14,6 +14,9 @@
 tmp/
 temp/
 
+# Neovim
+config/nvim/.config/nvim/lazy-lock.json
+
 # ZSH local files
 config/zsh/.config/zsh/.zcompdump
 config/zsh/.config/zsh/.zcompcache/

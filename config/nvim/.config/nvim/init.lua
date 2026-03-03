@@ -340,7 +340,6 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>g', group = '[G]it' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
       },
     },
@@ -628,7 +627,6 @@ require('lazy').setup({
         ts_ls = {},
         tailwindcss = {},
         eslint = {},
-        stylua = {}, -- Used to format Lua code
 
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
@@ -669,6 +667,7 @@ require('lazy').setup({
       -- You can press `g?` for help in this menu.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        'stylua',
         'prettier',
       })
 
