@@ -300,6 +300,16 @@ require('lazy').setup({
     },
   },
 
+  {
+    'sindrets/diffview.nvim',
+    cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+    keys = {
+      { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = '[G]it [D]iff view' },
+      { '<leader>gh', '<cmd>DiffviewFileHistory %<CR>', desc = '[G]it File [H]istory' },
+    },
+    opts = {},
+  },
+
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -329,6 +339,7 @@ require('lazy').setup({
       spec = {
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
         { '<leader>t', group = '[T]oggle' },
+        { '<leader>g', group = '[G]it' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
       },
