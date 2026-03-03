@@ -73,6 +73,31 @@ Zsh is the primary shell. Bash config is a self-contained fallback.
 - **config/git/.gitconfig**: Git configuration with global gitignore reference (uses `[include]` to load `~/.gitconfig.local` for user identity)
 - **scripts/git-setup.sh**: Interactive Git user identity setup (creates `~/.gitconfig.local`)
 - **config/ghostty/.config/ghostty/config**: Terminal emulator with Catppuccin theme and custom themes
+- **config/nvim/.config/nvim/init.lua**: Neovim configuration based on kickstart.nvim
+
+### Neovim Configuration
+
+Based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) with agentic coding optimizations. Single-file `init.lua` using lazy.nvim plugin manager.
+
+**Key plugins:**
+- **blink.cmp** — Completion engine with LSP, snippets, and Copilot sources
+- **copilot.lua + blink-cmp-copilot** — GitHub Copilot completions in the blink.cmp menu
+- **Telescope** — Fuzzy finder for files, grep, LSP symbols
+- **Treesitter** — Syntax highlighting (JS/TS/Lua/Bash/CSS/JSON/Markdown)
+- **Mason** — Auto-installs LSP servers and tools
+- **conform.nvim** — Format-on-save (prettier for JS/TS, stylua for Lua)
+- **diffview.nvim** — Review git diffs inside nvim (`<leader>gd`, `<leader>gh`)
+- **oil.nvim** — Filesystem navigation as a buffer (`-`)
+- **gitsigns.nvim** — Git gutter signs
+- **Catppuccin** — Macchiato theme (consistent with Ghostty and Starship)
+
+**LSP servers:** ts_ls (TypeScript), eslint, tailwindcss, lua_ls
+**Formatters:** prettier (JS/TS/JSON/CSS/HTML), stylua (Lua)
+
+**Agentic coding features:**
+- Auto-reload: Files edited by Claude Code are silently reloaded via `FocusGained`/`BufEnter`/`CursorHold` autocommands
+- diffview.nvim: Review agent changes as unified diffs before committing
+- oil.nvim: Navigate to new files created by agents
 
 ## Adding New Tools
 

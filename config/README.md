@@ -70,8 +70,7 @@ Shell-agnostic configurations that work with both shells:
 - `.gitignore_global` - Common ignore patterns for all projects
 
 **Neovim (`config/nvim/`)**:
-- `init.lua` - Modern Lua-based configuration with React development workflow
-- `lazy-lock.json` - Plugin lockfile for reproducible setup
+- `init.lua` - Kickstart.nvim-based config with Copilot, diffview, and oil.nvim for agentic coding
 
 **GitHub CLI (`config/gh/`)**:
 - `config.yml` - Aliases and settings for GitHub CLI
