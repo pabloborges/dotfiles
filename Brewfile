@@ -30,6 +30,7 @@ brew "neovim" # Modern Vim-based text editor
 brew "opencode" # Open source AI coding agent
 brew "prettier" # Code formatter
 brew "shfmt" # Shell script formatter
+brew "tree-sitter" # Parser generator (needed by nvim-treesitter main branch)
 brew "worktrunk" # Git worktree manager
 
 # Productivity tools
