@@ -2,8 +2,10 @@
 # Environment variables  #
 # ########################
 
-# Enable vim keybindings in the terminal
-# export EDITOR=nvim
+# Default editor for the terminal (git commits, crontab, etc.)
+# --wait blocks until the file/window is closed, required for $EDITOR usage
+export EDITOR="zed --wait"
+export VISUAL="$EDITOR"
 
 # Set the default pager to less (instead of more) for better navigation
 export PAGER=less
