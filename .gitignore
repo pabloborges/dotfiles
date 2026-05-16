@@ -14,6 +14,9 @@
 tmp/
 temp/
 
+# Claude Code
+.claude/
+
 # Neovim
 config/nvim/.config/nvim/lazy-lock.json
 
