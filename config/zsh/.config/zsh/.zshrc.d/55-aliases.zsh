@@ -11,3 +11,6 @@ alias glog='git log --oneline --graph --decorate'
 
 # Docker
 alias compose="docker compose"
+
+# Claude
+alias claude-serena='claude --system-prompt="$(serena prompts print-cc-system-prompt-override)"'
