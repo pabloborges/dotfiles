@@ -67,3 +67,5 @@ tags
 # Personal tooling artifacts
 .playwright-cli/
 .serena/
+
+**/.claude/.cc-writes/
