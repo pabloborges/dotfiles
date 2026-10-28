@@ -33,8 +33,8 @@ gui:
   #   "Your Name": "#b7bdf8" # Lavender
   #   "Colleague Name": "#eed49f" # Yellow
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --line-numbers --hyperlinks
+      command: delta --dark --paging=never --line-numbers --hyperlinks
 os:
   editPreset: nvim
