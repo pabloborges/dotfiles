@@ -26,3 +26,6 @@ config/zsh/.config/zsh/.zcompcache/
 config/zsh/.config/zsh/.zsh_history
 config/zsh/.config/zsh/.zsh_sessions/
 config/zsh/.config/zsh/.zshrc.d/99-local.zsh
+
+# GitHub CLI machine-local auth state (accounts, active user)
+config/gh/.config/gh/hosts.yml
