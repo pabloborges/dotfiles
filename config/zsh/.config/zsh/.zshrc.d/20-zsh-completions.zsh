@@ -1,9 +1,8 @@
 # Load zsh completions
-# Homebrew site-functions (contains brew, asdf, etc.)
-fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
+# Homebrew site-functions (brew, asdf, etc.) are added to fpath by 10-homebrew.
 
 # Additional zsh-completions package
-fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
+[[ -d "$HOMEBREW_PREFIX/share/zsh-completions" ]] && fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
 
 # Initialize completion system
 autoload -Uz compinit && compinit

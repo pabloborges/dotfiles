@@ -4,10 +4,6 @@
 # standard "command not found" error.
 # See: https://docs.brew.sh/Command-Not-Found
 
-if command -v brew >/dev/null 2>&1; then
-    HOMEBREW_COMMAND_NOT_FOUND_HANDLER="$(brew --repository)/Library/Homebrew/command-not-found/handler.sh"
-    if [[ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ]]; then
-        source "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER"
-    fi
-    unset HOMEBREW_COMMAND_NOT_FOUND_HANDLER
+if [[ -r "$HOMEBREW_REPOSITORY/Library/Homebrew/command-not-found/handler.sh" ]]; then
+    source "$HOMEBREW_REPOSITORY/Library/Homebrew/command-not-found/handler.sh"
 fi
