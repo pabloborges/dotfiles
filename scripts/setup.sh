@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 main() {
   echo "🚀 Setting up dotfiles..."
 
@@ -15,19 +17,19 @@ main() {
   echo "✅ Homebrew found"
 
   # Install dependencies
-  ./scripts/install.sh
+  "$SCRIPTS_DIR"/install.sh
 
   # Setup stow
-  ./scripts/stow.sh
+  "$SCRIPTS_DIR"/stow.sh
 
   # Start colima at login
-  ./scripts/colima-autostart.sh
+  "$SCRIPTS_DIR"/colima-autostart.sh
 
   # Configure Git user identity
-  ./scripts/git-setup.sh
+  "$SCRIPTS_DIR"/git-setup.sh
 
   # Configure macOS defaults
-  ./scripts/macos-defaults.sh
+  "$SCRIPTS_DIR"/macos-defaults.sh
 
   echo "✨ Setup complete! Please restart your shell to see changes."
 }
