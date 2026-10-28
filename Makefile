@@ -22,7 +22,7 @@ stow: ## Symlink dotfiles to home directory
 	@./scripts/stow.sh
 
 unstow: ## Remove symlinks from home directory
-	@./scripts/unstow.sh
+	@./scripts/stow.sh --delete
 
 defaults: ## Configure macOS system defaults
 	@./scripts/macos-defaults.sh

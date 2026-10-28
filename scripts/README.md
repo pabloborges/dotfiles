@@ -33,10 +33,14 @@ Installs all Homebrew dependencies:
 - Updates Homebrew before installation
 
 ### `stow.sh`
-Creates symbolic links using GNU Stow:
-- Iterates through all directories in `config/`
-- Creates symlinks to `$HOME` using `stow -d config -t $HOME`
-- Ensures proper ownership and permissions
+Links or unlinks Stow packages: `stow.sh [--delete] [package...]`
+- No packages: every directory in `config/`; otherwise only the named ones
+- Links with `stow --restow`, so re-running also prunes stale links
+- `--delete` removes the symlinks (`make unstow`)
+- Conflicts with existing real files are reported per package at the end; the conflicting package is skipped, the rest still link, and the script exits 1
+- Unknown package names exit 2 before anything changes
+- Creates `~/.config` first so Stow never folds it into a symlink into the repo
+- Target defaults to `$HOME`; set `STOW_TARGET` to link into another directory (e.g. a `mktemp -d` dry run)
 
 ### `colima-autostart.sh`
 Installs a user LaunchAgent that runs `colima start` at login:
@@ -44,11 +48,6 @@ Installs a user LaunchAgent that runs `colima start` at login:
 - Sets `XDG_CONFIG_HOME` so colima uses the VM in `~/.config/colima`; `brew services start colima` omits it and boots a fresh, empty VM from `~/.colima`
 - Logs to `~/Library/Logs/colima.log`
 - Idempotent; skips if colima is not installed
-
-### `unstow.sh`
-Removes all symlinks:
-- Safely removes all Stow-managed symlinks
-- Useful for resetting the configuration
 
 ### `macos-defaults.sh`
 Configures macOS system defaults for power users:
@@ -115,8 +114,9 @@ You can run scripts independently of the Makefile:
 # Install dependencies only
 ./scripts/install.sh
 
-# Create symlinks only
+# Create symlinks only (all packages, or just some)
 ./scripts/stow.sh
+./scripts/stow.sh zsh git
 
 # Apply macOS defaults only
 ./scripts/macos-defaults.sh
@@ -125,7 +125,7 @@ You can run scripts independently of the Makefile:
 ./scripts/colima-autostart.sh
 
 # Remove all symlinks
-./scripts/unstow.sh
+./scripts/stow.sh --delete
 ```
 
 ## Customization
@@ -172,9 +172,9 @@ chmod +x scripts/*.sh
 - Install Homebrew first: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 - Or run the full `make setup` which includes Homebrew installation
 
-**Stow conflicts**:
-- Run `make unstow` first to clean up existing symlinks
-- Then run `make stow` to recreate them
+**Stow conflicts** (`⚠ Skipped: <package>`):
+- A real file exists where a symlink should go; the output names it
+- Move or delete that file (back it up if it has settings you want), then re-run `make stow`
 
 **macOS defaults not applying**:
 - Some settings require logging out or restarting
