@@ -1,4 +1,4 @@
-.PHONY: help install setup clean defaults
+.PHONY: help install setup clean defaults colima-autostart
 
 help: ## Show this help message
 	@echo "Usage: make [target]"
@@ -26,3 +26,6 @@ unstow: ## Remove symlinks from home directory
 
 defaults: ## Configure macOS system defaults
 	@./scripts/macos-defaults.sh
+
+colima-autostart: ## Start colima at login via a LaunchAgent
+	@./scripts/colima-autostart.sh

@@ -14,7 +14,8 @@ scripts/setup.sh
 1. Check for Homebrew installation
 2. scripts/install.sh → brew bundle install
 3. scripts/stow.sh → create symlinks
-4. scripts/macos-defaults.sh → configure system
+4. scripts/colima-autostart.sh → start colima at login
+5. scripts/macos-defaults.sh → configure system
 ```
 
 ## Script Details
@@ -36,6 +37,13 @@ Creates symbolic links using GNU Stow:
 - Iterates through all directories in `config/`
 - Creates symlinks to `$HOME` using `stow -d config -t $HOME`
 - Ensures proper ownership and permissions
+
+### `colima-autostart.sh`
+Installs a user LaunchAgent that runs `colima start` at login:
+- Writes `~/Library/LaunchAgents/com.github.abiosoft.colima.plist` and loads it
+- Sets `XDG_CONFIG_HOME` so colima uses the VM in `~/.config/colima`; `brew services start colima` omits it and boots a fresh, empty VM from `~/.colima`
+- Logs to `~/Library/Logs/colima.log`
+- Idempotent; skips if colima is not installed
 
 ### `unstow.sh`
 Removes all symlinks:
@@ -112,6 +120,9 @@ You can run scripts independently of the Makefile:
 
 # Apply macOS defaults only
 ./scripts/macos-defaults.sh
+
+# Start colima at login only
+./scripts/colima-autostart.sh
 
 # Remove all symlinks
 ./scripts/unstow.sh

@@ -20,6 +20,9 @@ main() {
   # Setup stow
   ./scripts/stow.sh
 
+  # Start colima at login
+  ./scripts/colima-autostart.sh
+
   # Configure Git user identity
   ./scripts/git-setup.sh
 

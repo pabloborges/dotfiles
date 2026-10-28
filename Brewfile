@@ -23,6 +23,11 @@ brew "zsh-syntax-highlighting" # Syntax highlighting for Zsh
 # Development tools
 brew "asdf" # Version manager
 brew "black" # Python code formatter
+brew "colima" # Container runtime (Docker Engine in a Lima VM, no Docker Desktop license)
+brew "docker" # Docker CLI (client only; engine comes from colima)
+brew "docker-buildx" # BuildKit plugin; needs cliPluginsExtraDirs in ~/.docker/config.json
+brew "docker-compose" # Compose plugin; needs cliPluginsExtraDirs in ~/.docker/config.json
+brew "docker-credential-helper" # Stores registry credentials in the macOS keychain
 brew "gh" # GitHub CLI tool
 brew "git-delta" # Syntax-highlighting pager for git and diff output
 brew "lazygit" # Simple terminal UI for git commands
