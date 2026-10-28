@@ -1,8 +1,14 @@
 # Load fzf shell integration (Ctrl-R, Ctrl-T, Alt-C)
 source <(fzf --zsh)
 
-# Bind UP arrow to fzf history search instead of default Ctrl-R
-bindkey '^[[A' fzf-history-widget
+# UP/DOWN: cycle history filtered by what's already typed (prefix match).
+# Empty line cycles full history. fuzzy search remains on Ctrl-R.
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
-# Bind DOWN arrow to default history search (Ctrl-R)
-bindkey '^[[B' history-search-backward
+# Bind both normal (^[[A) and application-mode (^[OA) arrow sequences
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[OA' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+bindkey '^[OB' down-line-or-beginning-search
