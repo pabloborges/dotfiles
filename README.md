@@ -1,60 +1,58 @@
 # Dotfiles
 
-A comprehensive and extensible dotfiles configuration for macOS.
+macOS dotfiles managed with GNU Stow and Homebrew. Setup needs no admin rights.
 
-## Features
+## What's included
 
-- Modern CLI tools (eza, fd, ripgrep, bat, tldr, starship, zoxide)
-- Development tools (git, git-delta, git-extras, gh, lazygit, neovim)
-- Container management (docker, colima, docker-compose)
-- Productivity apps (ghostty, raycast)
-- ASDF version manager
-- Starship prompt with Catppuccin Powerline (Machiatto theme)
-- Nerd fonts (Fira Code, Iosevka)
-- GNU Stow for easy management
-- Comprehensive shell completions and syntax highlighting
-- Sensible macOS defaults for power users
+- **Shell**: zsh with fzf, fzf-tab, autosuggestions, syntax highlighting, zoxide and a Starship prompt; bash as a minimal fallback
+- **CLI tools**: eza, bat, ripgrep, fd, jq, httpie, tealdeer, htop
+- **Development**: git with delta, gh, lazygit, Neovim (kickstart.nvim), asdf, worktrunk, opencode
+- **Containers**: colima with the docker CLI, buildx and compose, started at login
+- **Apps and fonts**: Ghostty, Raycast, Fira Code and Iosevka Nerd Fonts
+- **Theme**: Catppuccin across Ghostty, Neovim and Starship
+- **macOS defaults**: Finder, Dock, keyboard, screenshots and more
 
-## Prerequisites
+The [`Brewfile`](./Brewfile) has the full list.
 
-- macOS
-- Homebrew
+## Quick start
 
-## Quick Start
-
-Run the setup command to install all dependencies and configure your environment:
+Install [Homebrew](https://brew.sh), then:
 
 ```bash
+git clone https://github.com/pabloborges/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 make setup
 ```
 
-Restart your shell to see changes. After setup, you can initialize ASDF (optional):
-```bash
-asdf init
-```
+`make setup` installs the Brewfile, links the configs, starts colima at login, prompts for your git name and email, and applies the macOS defaults. Restart your shell afterwards.
 
-Or use the individual commands:
+If a file already exists where a link should go, `make stow` skips that package, lists the file, and exits non-zero. Move the file aside and run `make stow` again.
 
-```bash
-make install   # Install dependencies
-make stow      # Symlink dotfiles to home directory
-```
+## Commands
 
-## Available Commands
+| Command | Description |
+|---|---|
+| `make help` | List all targets |
+| `make setup` | Full setup for a new machine |
+| `make install` | Install Homebrew dependencies |
+| `make stow` | Symlink configs into `$HOME` |
+| `make unstow` | Remove those symlinks |
+| `make defaults` | Apply macOS defaults (safe to re-run) |
+| `make colima-autostart` | Start colima at login |
+| `make clean` | Remove editor temp files |
 
-- `make help` - Show all available commands
-- `make setup` - Install and configure all dependencies for a new machine
-- `make install` - Install dependencies using Homebrew
-- `make stow` - Symlink dotfiles to home directory
-- `make unstow` - Remove symlinks from home directory
-- `make defaults` - Configure macOS system defaults (idempotent)
-- `make clean` - Clean up temporary files
+## Machine-local settings
+
+These files are gitignored, so you create them on each machine:
+
+- `~/.gitconfig.local`: git name, email and signing key. `make setup` writes it.
+- `~/.config/zsh/.zshrc.d/99-local.zsh`: extra environment variables, PATH entries and secrets.
 
 ## Documentation
 
-- [Configuration Management (config/)](./config/README.md) - How Stow packages, shared configs, and shell setups work
-- [Setup Scripts (scripts/)](./scripts/README.md) - Details on installation and macOS system defaults
+- [`config/README.md`](./config/README.md): packages, zsh module load order, adding a tool
+- [`scripts/README.md`](./scripts/README.md): setup flow, scripts, macOS defaults applied
 
 ## License
 
-Released under the [MIT License](https://opensource.org/licenses/MIT).
+[MIT](./MIT-LICENSE)

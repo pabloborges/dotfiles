@@ -1,135 +1,66 @@
-# Configuration Management
+# Configuration Packages
 
-This directory contains all dotfiles configurations managed by GNU Stow. Each subdirectory is a "package" that gets symlinked to your home directory.
+Each directory here is a [GNU Stow](https://www.gnu.org/software/stow/) package. Its contents mirror `$HOME`, and `make stow` symlinks them into place:
 
-## GNU Stow Overview
-
-Stow creates symbolic links from files in this directory to your home directory (`~`). For example:
-
-- `config/starship/.config/starship.toml` → `~/.config/starship.toml`
 - `config/git/.gitconfig` → `~/.gitconfig`
-- `config/bash/.bashrc` → `~/.bashrc`
+- `config/starship/.config/starship.toml` → `~/.config/starship.toml`
+- `config/zsh/.config/zsh/` → `~/.config/zsh/` (the whole directory is one link)
 
-This approach keeps your configurations organized while making them available in their expected locations.
+Because these are symlinks, editing `~/.config/...` edits the file in this repo.
 
-## Directory Structure
+## Packages
 
-```
-config/
-├── bash/           # Bash shell configuration
-├── shared/         # Shell-agnostic configurations
-├── zsh/            # Zsh shell configuration
-├── git/            # Git settings and global ignore
-├── starship/       # Starship prompt configuration
-├── nvim/           # Neovim editor configuration
-├── ghostty/        # Ghostty terminal emulator
-├── gh/             # GitHub CLI settings
-└── lazygit/        # Lazygit UI configuration
-```
+| Package | Links | Notes |
+|---|---|---|
+| `bash` | `~/.bashrc`, `~/.bash_profile` | Self-contained fallback shell |
+| `gh` | `~/.config/gh/` | Aliases and editor; `hosts.yml` (auth state) is gitignored |
+| `ghostty` | `~/.config/ghostty/` | Catppuccin Macchiato, Iosevka Nerd Font, `ssh-env` integration |
+| `git` | `~/.gitconfig`, `~/.gitignore_global` | delta pager, rebase-on-pull, rerere; identity in `~/.gitconfig.local` |
+| `lazygit` | `~/.config/lazygit/config.yml` | delta as diff renderer, nvim as editor |
+| `nvim` | `~/.config/nvim/` | Single-file kickstart.nvim config (`init.lua`): Catppuccin Macchiato, Copilot via blink.cmp, diffview, oil.nvim |
+| `starship` | `~/.config/starship.toml` | Catppuccin Powerline prompt, Mocha palette |
+| `zsh` | `~/.zshenv`, `~/.config/zsh/` | Primary shell, see below |
 
-## Shell Configuration Architecture
+## Zsh
 
-This project uses a hybrid approach to minimize duplication between Bash and Zsh:
+`~/.zshenv` sets `XDG_CONFIG_HOME`, `ZDOTDIR=~/.config/zsh`, `EDITOR` and de-duplicates `PATH`. `.zshrc` then sources every `.zshrc.d/*.zsh` in numeric order:
 
-### Shared Configuration (`config/shared/`)
+| File | Purpose |
+|---|---|
+| `05-terminal.zsh` | Replace `TERM=dumb` so prompts and plugins work |
+| `10-homebrew.zsh` | `brew shellenv`: PATH, `fpath`, `HOMEBREW_PREFIX` / `HOMEBREW_REPOSITORY` for later modules |
+| `20-zsh-completions.zsh` | Extra completions, `compinit`, case-insensitive and substring matching |
+| `21-fzf-tab.zsh` | fzf-powered completion menu (after `compinit`, before 25/26) |
+| `22-fzf.zsh` | fzf key bindings (Ctrl-R, Ctrl-T, Alt-C); Up/Down search history by typed prefix |
+| `25-zsh-syntax-highlighting.zsh` | Command-line syntax highlighting |
+| `26-zsh-autosuggestions.zsh` | Fish-style inline suggestions |
+| `30-zoxide.zsh` | `z` directory jumper |
+| `40-starship.zsh` | Starship prompt |
+| `45-globalias.zsh` | Expand aliases on Space (Ctrl-Space inserts a plain space) |
+| `50-modern-tools.zsh` | asdf shims on PATH; `ls`/`cat`/`grep`/`find` aliased to eza/bat/rg/fd when installed |
+| `55-aliases.zsh` | git and docker shortcuts |
+| `60-functions.zsh` | `getenv [file]`: export variables from a `.env` file |
+| `65-worktrunk.zsh` | Worktrunk (`wt`) shell integration |
+| `70-command-not-found.zsh` | Suggest the Homebrew formula for an unknown command |
+| `99-local.zsh` | Machine-local settings and secrets; gitignored, create it yourself |
 
-Shell-agnostic configurations that work with both shells:
+Every module checks that its tool is installed, so a missing tool doesn't cause startup errors.
 
-- `10-homebrew.sh` - PATH setup for Homebrew + bash completions
-- `30-zoxide.sh` - Initialize zoxide for directory jumping
-- `40-starship.sh` - Initialize Starship prompt (includes shell detection)
-- `50-modern-tools.sh` - ASDF and modern tool aliases (eza, bat, fd, etc.)
-- `55-aliases.sh` - General shell aliases
+## Bash
 
-### Shell-Specific Configuration
+`.bashrc` contains its own small setup (Homebrew, asdf, zoxide) and shares no files with zsh. `.bash_profile` sources it for login shells.
 
-**Bash (`config/bash/`)**:
-- `.bashrc` - Main configuration file that loads shared configs
-- `.bash_profile` - Sources `.bashrc` for login shells
+## Adding a tool
 
-**Zsh (`config/zsh/`)**:
-- `.zshrc` - Main configuration file that loads shared configs
-- `.zprofile` - Sources `.zshrc` for login shells
-- `.zshrc.d/` - Zsh-specific enhancements loaded after shared configs:
-  - `20-zsh-completions.zsh` - Enhanced completions for Homebrew tools
-  - `25-zsh-syntax-highlighting.zsh` - Syntax highlighting
-  - `27-zsh-history-substring-search.zsh` - Better history search
-  - `45-globalias.zsh` - Alias expansion on space
+1. Add it to the `Brewfile` and run `make install`.
+2. Create `config/<tool>/` with paths relative to `$HOME`, e.g. `config/<tool>/.config/<tool>/config`.
+3. Run `make stow` (or `./scripts/stow.sh <tool>`).
+4. For shell integration, add a guarded `.zshrc.d/NN-<tool>.zsh`, numbered by what it must load after.
+5. Add the package or module to the tables above.
 
-### Loading Order
+## Stow commands
 
-1. **Shared configs** are loaded first by both shells
-2. **Shell-specific configs** are loaded after (Zsh only, Bash uses integrated completions)
+- `make stow` / `make unstow`: link or unlink every package.
+- `./scripts/stow.sh [--delete] <package>...`: link or unlink only the named packages.
 
-## Package Details
-
-### Development Tools
-
-**Git (`config/git/`)**:
-- `.gitconfig` - Git settings (editor, pager, diff settings)
-- `.gitignore_global` - Common ignore patterns for all projects
-
-**Neovim (`config/nvim/`)**:
-- `init.lua` - Kickstart.nvim-based config with Copilot, diffview, and oil.nvim for agentic coding
-
-**GitHub CLI (`config/gh/`)**:
-- `config.yml` - Aliases and settings for GitHub CLI
-
-**Lazygit (`config/lazygit/`)**:
-- `config.yml` - Git UI configuration with Catppuccin theme
-
-### Terminal & Shell
-
-**Starship (`config/starship/`)**:
-- `starship.toml` - Catppuccin Powerline prompt (Macchiato theme)
-
-**Ghostty (`config/ghostty/`)**:
-- `config` - Terminal emulator with Catppuccin Macchiato theme
-- `themes/` - Custom Catppuccin themes (Macchiato, Mocha)
-
-## Adding New Tools
-
-To add a new tool to your dotfiles:
-
-1. **Add to Brewfile** (if it's a Homebrew package):
-   ```bash
-   brew "new-tool"
-   ```
-
-2. **Create configuration directory**:
-   ```bash
-   mkdir -p config/new-tool/
-   ```
-
-3. **Add configuration files** with paths relative to `$HOME`:
-   ```
-   config/new-tool/.config/new-tool/config
-   ```
-
-4. **Create symlinks**:
-   ```bash
-   make stow
-   ```
-
-5. **Test the configuration** and make any needed adjustments
-
-## Stow Commands
-
-The Makefile provides convenient Stow commands:
-
-- `make stow` - Create all symlinks
-- `make unstow` - Remove all symlinks
-- Manual: `stow -d config -t $HOME <package>`
-
-## Managing Packages
-
-Each subdirectory in `config/` is an independent Stow package:
-
-- **Individual management**: `stow -d config nvim` (only stow nvim package)
-- **Package removal**: `stow -d config -D nvim` (remove nvim symlinks)
-- **Listing packages**: `ls -d config/*/` shows all available packages
-
-This modular approach makes it easy to:
-- Enable/disable specific tools
-- Share individual configurations with others
-- Maintain clean separation between different tool setups
+See [`scripts/README.md`](../scripts/README.md#stowsh) for conflict handling.

@@ -12,4 +12,4 @@ Steps:
 2. Run `make install` to install the new dependency
 3. Create `config/$0/` with config files mirroring `$HOME`
 4. Run `make stow` to create symlinks
-5. Update CLAUDE.md if the tool has notable configuration
+5. Add the package (and any shell module) to the tables in `config/README.md`
