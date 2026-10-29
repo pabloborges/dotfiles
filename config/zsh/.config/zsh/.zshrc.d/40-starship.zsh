@@ -1,2 +1,4 @@
 # Initialize Starship prompt
-eval "$(starship init zsh)"
+if command -v starship &>/dev/null; then
+	eval "$(starship init zsh)"
+fi

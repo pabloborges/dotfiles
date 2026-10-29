@@ -1,5 +1,7 @@
 # Load fzf shell integration (Ctrl-R, Ctrl-T, Alt-C)
-source <(fzf --zsh)
+if command -v fzf &>/dev/null; then
+	source <(fzf --zsh)
+fi
 
 # UP/DOWN: cycle history filtered by what's already typed (prefix match).
 # Empty line cycles full history. fuzzy search remains on Ctrl-R.
